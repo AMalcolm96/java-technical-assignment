@@ -1,6 +1,6 @@
 package kata.supermarket;
 
-import kata.supermarket.discount.Discount;
+import kata.supermarket.discount.IDiscount;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -9,12 +9,12 @@ public class ItemByWeight implements Item {
 
     private final WeighedProduct product;
     private final BigDecimal weightInKilos;
-    private final Discount discount;
+    private final IDiscount iDiscount;
 
-    ItemByWeight(final WeighedProduct product, final BigDecimal weightInKilos, final Discount discount) {
+    ItemByWeight(final WeighedProduct product, final BigDecimal weightInKilos, final IDiscount iDiscount) {
         this.product = product;
         this.weightInKilos = weightInKilos;
-        this.discount = discount;
+        this.iDiscount = iDiscount;
     }
 
     public BigDecimal price() {
@@ -22,6 +22,6 @@ public class ItemByWeight implements Item {
     }
 
     public BigDecimal discount() {
-        return discount.applyDiscount(this);
+        return iDiscount.applyDiscount(this);
     }
 }

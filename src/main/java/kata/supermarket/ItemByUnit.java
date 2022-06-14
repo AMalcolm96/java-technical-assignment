@@ -1,6 +1,6 @@
 package kata.supermarket;
 
-import kata.supermarket.discount.Discount;
+import kata.supermarket.discount.IDiscount;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -8,13 +8,13 @@ import java.math.RoundingMode;
 public class ItemByUnit implements Item {
 
     private final Product product;
-    private final Discount discount;
+    private final IDiscount iDiscount;
     private final int units;
 
-    ItemByUnit(final Product product, int units, Discount discount) {
+    ItemByUnit(final Product product, int units, IDiscount iDiscount) {
         this.product = product;
         this.units = units;
-        this.discount = discount;
+        this.iDiscount = iDiscount;
     }
 
     public BigDecimal price() {
@@ -28,7 +28,7 @@ public class ItemByUnit implements Item {
     }
 
     public BigDecimal discount() {
-        return discount.applyDiscount(this);
+        return iDiscount.applyDiscount(this);
     }
 
     public int units() {

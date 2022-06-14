@@ -5,7 +5,7 @@ import kata.supermarket.ItemByUnit;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class BuyOneGetOneFreeDiscount implements Discount {
+public class BuyOneGetOneFreeDiscount implements IDiscount {
     @Override
     public BigDecimal applyDiscount(ItemByUnit item) {
         return new BigDecimal(item.units() / 2)

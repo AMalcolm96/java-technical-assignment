@@ -1,6 +1,6 @@
 package kata.supermarket;
 
-import kata.supermarket.discount.Discount;
+import kata.supermarket.discount.IDiscount;
 import kata.supermarket.discount.NoDiscount;
 
 import java.math.BigDecimal;
@@ -22,7 +22,7 @@ public class WeighedProduct {
         return new ItemByWeight(this, kilos, new NoDiscount());
     }
 
-    public Item weighingWithDiscount(final BigDecimal kilos, Discount discount) {
-        return new ItemByWeight(this, kilos, discount);
+    public Item weighingWithDiscount(final BigDecimal kilos, IDiscount iDiscount) {
+        return new ItemByWeight(this, kilos, iDiscount);
     }
 }

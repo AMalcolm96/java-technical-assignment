@@ -5,7 +5,7 @@ import kata.supermarket.ItemByWeight;
 
 import java.math.BigDecimal;
 
-public interface Discount {
+public interface IDiscount {
     //TODO: Can this be made generic to avoid method overloading?
     default BigDecimal applyDiscount(final ItemByUnit itemByUnit) {
         return BigDecimal.ZERO;

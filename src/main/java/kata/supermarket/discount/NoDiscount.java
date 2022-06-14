@@ -1,6 +1,6 @@
 package kata.supermarket.discount;
 
 
-public class NoDiscount implements Discount {
+public class NoDiscount implements IDiscount {
 
 }

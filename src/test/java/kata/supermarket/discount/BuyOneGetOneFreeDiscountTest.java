@@ -19,8 +19,8 @@ public class BuyOneGetOneFreeDiscountTest {
     @MethodSource
     @ParameterizedTest(name = "{0}")
     void applyBuyOneGetOneFreeDiscount(String description, String expectedDiscountTotal, ItemByUnit item) {
-        final BuyOneGetOneFreeDiscount discount = new BuyOneGetOneFreeDiscount();
-        assertEquals(new BigDecimal(expectedDiscountTotal), discount.applyDiscount(item));
+        final BuyOneGetOneFreeDiscount buyOneGetOneFreeDiscount = new BuyOneGetOneFreeDiscount();
+        assertEquals(new BigDecimal(expectedDiscountTotal), buyOneGetOneFreeDiscount.applyDiscount(item));
     }
 
     static Stream<Arguments> applyBuyOneGetOneFreeDiscount() {
