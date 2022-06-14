@@ -22,6 +22,6 @@ public class Product {
     }
 
     public Item createProduct(final int units, final Discount discount) {
-        return new ItemByUnit(this, units, new NoDiscount());
+        return new ItemByUnit(this, units, discount);
     }
 }
