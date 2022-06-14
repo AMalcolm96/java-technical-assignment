@@ -1,5 +1,6 @@
 package kata.supermarket;
 
+import kata.supermarket.discount.NoDiscount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -52,6 +53,18 @@ class BasketTest {
         return Arguments.of("a single item priced per unit", "0.49", Collections.singleton(aPintOfMilk()));
     }
 
+    //TODO Make this test more robust as it doesn't calculate any meaningful discount
+    private static Arguments aSingleItemPricedByWeightWithDiscount() {
+        return Arguments.of("a single item priced by weight with discount", "2.99",
+                Collections.singletonList(twoHundredGramsOfPickAndMixWithNoDiscount()));
+    }
+
+    //TODO Make this test more robust as it doesn't calculate any meaningful discount
+    private static Arguments multipleItemsPricedPerUnitWithDiscount() {
+        return Arguments.of("single item priced per unit with discount", "2.80",
+                Arrays.asList(aPackOfDigestivesWithNoDiscount(), aPackOfDigestivesMultipleUnitsWithNoDiscount()));
+    }
+
     private static Arguments noItems() {
         return Arguments.of("no items", "0.00", Collections.emptyList());
     }
@@ -79,4 +92,17 @@ class BasketTest {
     private static Item twoHundredGramsOfPickAndMix() {
         return aKiloOfPickAndMix().weighing(new BigDecimal(".2"));
     }
+
+    private static Item twoHundredGramsOfPickAndMixWithNoDiscount() {
+        return aKiloOfPickAndMix().weighingWithDiscount(new BigDecimal(".2"), new NoDiscount());
+    }
+
+    private static Item aPackOfDigestivesWithNoDiscount() {
+        return new Product(new BigDecimal("1.55")).oneOf();
+    }
+
+    private static Item aPackOfDigestivesMultipleUnitsWithNoDiscount() {
+        return new Product(new BigDecimal("1.55")).createProduct(3, new NoDiscount());
+    }
+
 }
